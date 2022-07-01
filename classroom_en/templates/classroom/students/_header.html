@@ -1,0 +1,16 @@
+
+<h4 class="my-3">Lista de Quiz</h4>
+<hr>
+
+
+<ul class="nav nav-tabs my-3">
+  <li class="nav-item">
+    <a class="nav-link{% if active == 'new' %} active{% endif %}" href="{% url 'students:quiz_list' %}">Novo</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link{% if active == 'taken' %} active{% endif %}" href="{% url 'students:taken_quiz_list' %}">Concluído</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link{% if active == 'students' %} active{% endif %}" href="{% url 'students:student_list' %}">Estudantes</a>
+  </li>
+</ul>
