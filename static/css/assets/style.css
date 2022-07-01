@@ -1,0 +1,49 @@
+#rcorners1 {
+  border-radius: 25px;
+  background: white;
+  width: auto;
+  height: auto;
+}
+
+.navbar {
+  border-bottom: 0px solid #888;
+}
+.letra {
+  font-family: "Fredoka One", cursive;
+}
+
+.letra01 {
+  font-family: "Barlow", sans-serif;
+}
+
+.icon {
+  height: 48px;
+}
+
+@media only screen and (max-width: 1026px) {
+  #fadeshow1 {
+    display: none;
+  }
+}
+
+.im {
+  height: 150px;
+}
+
+.flex-container {
+  display: flex;
+  overflow-x: auto;
+  flex-direction: row;
+}
+
+@media all and (min-width: 60em) {
+  .card-tutorial {
+    width: 20%;
+  }
+}
+
+@media all and (min-width: 60em) {
+  .card-team {
+    width: 19.8%;
+  }
+}

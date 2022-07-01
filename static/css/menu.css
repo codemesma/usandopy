@@ -1,0 +1,33 @@
+/* page style */
+a,
+a:focus,
+a:active,
+a:hover,
+object,
+embed {
+  outline: none;
+  text-decoration: none;
+}
+:-moz-any-link:focus {
+  outline: none;
+}
+input::-moz-focus-inner {
+  border: 0;
+}
+:focus {
+  outline: 0;
+}
+
+.navbar {
+  border-bottom: 0px solid #888;
+}
+
+.megamenu {
+  position: static;
+}
+
+.megamenu .dropdown-menu {
+  background: none;
+  border: none;
+  width: 100%;
+}
