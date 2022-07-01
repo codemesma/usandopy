@@ -3,19 +3,19 @@ from django.urls import include, path
 from .views import classroom, students, teachers
 
 urlpatterns = [
-    path('', classroom.home, name='home'),
-    path('about/', classroom.AboutView.as_view(), name='about'),
+    path('', classroom.home, name='home_en'),
+    path('about/', classroom.AboutView.as_view(), name='about_en'),
     # path('quizzes/', classroom.QuizListView.as_view(), name='quiz_list'),
 
     path('students/', include(([        
-        path('', students.StudentList.as_view(), name='student_list'),
-        path('<int:student>/', students.StudentDetail.as_view(), name='student_detail'),
-        path('interests/', students.StudentInterestsView.as_view(), name='student_interests'),
-        path('taken/', students.TakenQuizListView.as_view(), name='taken_quiz_list'),
-        path('quiz/', students.QuizListView.as_view(), name='quiz_list'),
-        path('quiz/<int:pk>/', students.take_quiz, name='take_quiz'),        
-        path('quiz/<int:pk>/studentresults/', students.QuizResultsView.as_view(), name='student_quiz_results'),
-    ], 'classroom'), namespace='students')),
+        path('', students.StudentList.as_view(), name='student_list_en'),
+        path('<int:student>/', students.StudentDetail.as_view(), name='student_detail_en'),
+        path('interests/', students.StudentInterestsView.as_view(), name='student_interests_en'),
+        path('taken/', students.TakenQuizListView.as_view(), name='taken_quiz_list_en'),
+        path('quiz/', students.QuizListView.as_view(), name='quiz_list_en'),
+        path('quiz/<int:pk>/', students.take_quiz, name='take_quiz_en'),        
+        path('quiz/<int:pk>/studentresults/', students.QuizResultsView.as_view(), name='student_quiz_results_en'),
+    ], 'classroom'), namespace='students_en')),
     path('teachers/', include(([
         path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
         path('quiz/add/', teachers.QuizCreateView.as_view(), name='quiz_add'),
