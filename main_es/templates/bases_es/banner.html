@@ -1,0 +1,54 @@
+{% load static %}
+<!-- Jumbotron -->
+<style>
+  .form-control {
+    padding: 5px;
+  }
+  @media only screen and (max-width: 1026px) {
+    #fadeshow1 {
+      display: none;
+    }
+  }
+</style>
+
+<div class="card card-image mt-5 pt-3 z-depth-0" style="background-color: #ffffff">
+  <div
+    class="text-white text-center py-0 px-4"
+  >
+    <div class="mt-4 container">
+      <!-- Content -->
+      <div class="row text-center">
+
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-6 mb-1">
+          <!-- Search Widget -->
+          <div class="widget search p-0 text-center mt-0 pt-0 mb-3 z-depth-0">
+            <form class="" action="{% url 'searcht_es' %}" method="get">
+              {% csrf_token %}
+              <div class="input-group z-depth-0">
+                <input
+                  name="q"
+                  type="text"
+                  class="form-control px-3 z-depth-0 border py-0 my-0"
+                  placeholder="Buscar..."
+                />
+                <span class="input-group-addon py-0" style="background-color: #f7992d;"
+                  ><i class="fa fa-search"></i
+                ></span>
+              </div>
+            </form>
+          </div>
+
+          <!-- Juntar button -->
+        </div>
+        <div class="col-lg-3 py-0 my-0"></div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- Jumbotron -->

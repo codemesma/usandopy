@@ -1,0 +1,71 @@
+{% extends 'site_en/noticia/index.html' %} {% load static %} {% block content %}
+<div class="container-scroller">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="news-post-wrapper">
+        <div class="news-post-wrapper-sm">
+          <h1 class="text-center">
+            {{ news.title }}
+          </h1>
+          <div class="text-center">
+            <a href="{{ news.category.get_absolute_url }}" class="btn btn-primary font-weight-bold mb-4">{{news.category}}</a>
+          </div>
+          <p class="fs-15 d-flex justify-content-center align-items-center m-0">
+            <img
+              src="{% if news.author.profile_pic %}  {{ news.author.profile_pic.url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+              alt=""
+              class="img-lg img-rounded mr-2"
+            />
+            {{ news.author|title }} | {{ news.timestamp|date:"j M Y" }}
+          </p>
+          <p class="pt-4 pb-4">
+            {{ news.description|safe }}
+          </p>
+
+          <div class="container mt-4 pt-2">
+            {% include 'posts/comments.html' %}
+          </div>
+        </div>
+
+
+        <div class="news-post-wrapper-sm mt-5">
+
+          <div class="text-center">
+          <h1 class="font-weight-600 text-center mb-5">Você pode gostar..</h1>
+          {% for post in related_posts %}
+          <div class="border-top py-5">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="position-relative image-hover">
+                  <img
+                    src="{% if post.thumbnail_url %}  {{ post.thumbnail_url }} {% else %}{{ post.thumbnail.url }}{% endif %}"
+                    alt="news"
+                    class="img-fluid"
+                  />
+                  <span class="thumb-title badge bg-primary py-1">
+                    <a class="text-white" href="{{ post.category.get_absolute_url }}"
+                    target="_self">{{ post.category }}</a>
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div class="position-relative image-hover">
+                  <h1 class="font-weight-normal">
+                    <a href="{{ post.get_absolute_url }}" style="color:#333333; font-size: 15px; " target="_self">
+                      {{ post.title }}
+                    </a>
+                  </h1>
+                  <p class="fs-15">{{ post.author|title }} | {{ post.timestamp|date:"j M Y" }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}

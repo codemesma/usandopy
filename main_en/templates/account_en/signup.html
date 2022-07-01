@@ -1,0 +1,48 @@
+{% extends "account/base.html" %} {% load i18n %}
+<!--...-->
+
+{% block head_title %}{% trans "Signup" %}{% endblock %} {% block head_links %}
+
+<title>{% trans "Sign Up" %}</title>
+
+{% endblock %} {% block content %}
+<div class="container pt-5">
+  {% block messages %} {% if messages %} {% for message in messages %}
+  <div class="alert alert-danger mx-0 px-0" role="alert">
+    {{message}}
+  </div>
+  {% endfor %} {% endif %} {% endblock %}
+  <div class="row row-cols-1 row-cols-md-1 mx-0 px-0">
+    <div class="col-lg-4 col-md-12 text-left mx-0 px-0">
+      <h3 class="h3" id="head_banner">{% trans "Sign Up" %}</h3>
+
+      <p class="">
+        {% blocktrans %}já tem uma conta? Então por favor
+        <a href="{{ login_url }}">Entra</a>.{% endblocktrans %}
+      </p>
+
+      <form
+        class="text-left mx-0 px-0"
+        id="signup_form"
+        method="post"
+        action="{% url 'account_signup' %}"
+      >
+        {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+
+        <input
+          class="mx-0 px-0"
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+
+        {% endif %}
+
+        <button class="btn btn-outline-primary btn-lg" type="submit">
+          {% trans "Sign Up" %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

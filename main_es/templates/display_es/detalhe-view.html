@@ -1,0 +1,213 @@
+{% extends 'bases_es/base.html' %} {% load static %}
+<!--  block content -->
+{%block title %} {{object.category}} - {{ object.title }} {%endblock%}
+<!--  block content -->
+{% block content %}
+<style>
+  @media only screen and (min-width: 1026px) {
+    #fadeshow11 {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1026px) {
+    #fadeshow1 {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 1026px) {
+    #fadeshow12 {
+      overflow-y: scroll;
+      height: 600px;
+    }
+  }
+
+  em {
+    color: #333333;
+    font-weight: bolder;
+  }
+
+
+  p {
+    color: #333333;
+    font-family: "Segoe UI";
+    font-size: 15.5px;
+    letter-spacing: normal;
+    word-spacing: 0px;
+    padding: 0px;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0px 0px 12px;
+    text-align: justify;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-indent:0px;
+  }
+  h1 {
+    color:#001c3b;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 23.1px;
+    margin: 0px 0px 8px;
+    text-transform: none;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-align: left;
+  }
+  h2 {
+    color:#001c3b;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 23.1px;
+    margin: 30px 0px 8px;
+    text-transform: none;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-align: left;
+  }
+</style>
+
+<div class="row row-cols-1 row-cols-md-3 my-4 mx-0 px-0">
+  <div  id="sticky-sidebar"
+      class="col-lg-2 col-md-2 col-sm-12 mx-0 px-1"
+      style="background-color: #f0f0f0">
+      <nav class="sticky-top px-1">
+          <div id="fadeshow1" class="sticky-top">
+            <ul
+              style="background-color: #fcfffd"
+              class="list-group list-group-flush list-unstyled list-group-flush components mb-1 px-0 mx-0"
+            >
+              <!-- Basico -->
+              <h6
+                id="fadeshow1"
+                class="text-left font-weight-bold text-white p-2 center mx-0 px-0 mt-5"
+                style="background-color: #f7992d;"
+              >
+                {{object.category}}
+              </h6>
+              {% for i in tut %} {% if object.category.id == i.category.id %}
+              {%if i.nivel == 'Basico' %} {% if object.title == i.title %}
+              <li
+                class="list-group-item px-1" style="background-color: #fcfffd"
+              >
+                <a class="font-weight-bold" style="background-color: #ffffff; color: #c92614" href="{% url 'tutorial-view_es' i.slug %}"
+                  >{{ i.title }}</a
+                >
+              </li>
+              {% else %}
+              <li
+                class="list-group-item px-1"
+                style="background-color: #fcfffd"
+              >
+                <a class=" font-weight-normal " style="font-size: 12.5px;" href="{% url 'tutorial-view_es' i.slug %}"
+                  >{{ i.title }}</a
+                >
+              </li>
+              {% endif %} {% endif %}{% endif %} {% endfor%}
+
+            </ul>
+            <div class=" px-0 ">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                     crossorigin="anonymous"></script>
+                <!-- baixo -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1810411345881098"
+                     data-ad-slot="9366002321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+          </div>
+      </nav>
+
+  </div>
+  <div
+    class="col-lg-7 col-md-12 col-sm-12 mx-0"
+    style="background-color: white;"
+  >
+    <div class="pt-5 mt-2 px-3">
+      <h1 class="mb-4 mt-3 text-left">{{object.title}}</h1>
+      <hr />
+
+      <p>
+        {{object.content | safe}}
+      </p>
+    </div>
+    <div class="pt-3"></div>
+
+    <div class="mb-5 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- Quadrado -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="4320030529"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    <div class="container mt-2 pt-2">{% include 'posts/comments.html' %}</div>
+  </div>
+  <div
+    id="sticky-sidebar"
+    class="col-lg-3 col-md-12 col-sm-12 mx-0 px-0"
+    style="background-color: #f0f0f0;"
+  >
+    <div class="sticky-top px-1">
+      <p class="my-2"></p>
+      <div class=" px-0 my-5">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- baixo -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="9366002321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+      <div class=" px-0 ">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- baixo -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="9366002321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+      <div class=" px-0 my-4">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- baixo -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="9366002321"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content  -->
+</div>
+{% endblock content %}
+
+<!-- /.content -->

@@ -1,0 +1,65 @@
+{% load static %}
+<!--  block footer -->
+{% block footer %}
+<!--Footer-->
+<footer
+  class="page-footer text-center font-small mt-0 pt-0 wow fadeIn mx-0 px-0 text-dark"
+  style="background-color: white;"
+>
+  <hr />
+  <!-- Social icons -->
+  <div class="pb-0 pt-1 h3 text-dark">
+    {% for s in sobre %} {% if s.facebook %}
+    <a href="{{s.facebook}}" target="_blank">
+      <i class="fab fa-facebook-f px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %} {% if s.linkedin %}
+    <a href="{{s.linkedin}}" target="_blank">
+      <i class="fab fa-linkedin px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %} {% if s.twiter %}
+    <a href="{{s.twiter}}" target="_blank">
+      <i class="fab fa-github px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %} {% if s.web %}
+    <a href="{{s.web}}" target="_blank">
+      <i class="fas fa-blog px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %} {% if s.instagram %}
+    <a href="{{s.instagram}}" target="_blank">
+      <i class="fab fa-instagram px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %} {% if s.youtube %}
+    <a href="{{s.youtube}}" target="_blank">
+      <i class="fab fa-youtube px-3 text-dark"></i>
+    </a>
+    {% else %} {% endif %}{% endfor%}
+  </div>
+  <!-- Social icons -->
+  <hr class="my-2" />
+  <!--Call to action-->
+  <div class="pt-0 h7">
+    <a class="mb-2 text-left mx-0 px-2 text-dark" href="{% url 'sobre' %}"
+      ><i class="fas fa-info-circle"></i> Sobre
+    </a>
+    <a class="mb-2 text-left mx-0 px-2 text-dark" href="{% url 'termo' %}"
+      ><i class="fas fa-hands-helping"></i> Termos de uso
+    </a>
+    <a class="mb-2 text-left mx-0 px-2 text-dark" href="{% url 'cokie' %}"
+      ><i class="fas fa-user-shield"></i> Política de Cookies
+    </a>
+    <a class="mb-2 text-left mx-0 px-2 text-dark" href="{% url 'cookie' %}"
+      ><i class="fas fa-user-shield"></i> Política de Privacidade
+    </a>
+
+      <a class="text-dark h7" href="https://www.usandopy.com/">
+        © 2022 Copyright UsandoPy
+      </a>
+  
+  </div>
+  <!--/.Call to action-->
+ 
+</footer>
+<!--/.Footer-->
+{% endblock footer %}
+<!-- /.footer -->

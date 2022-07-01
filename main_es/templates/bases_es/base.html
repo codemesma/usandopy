@@ -1,0 +1,140 @@
+{% load static %}
+<!--cookies-->
+{% load django_simple_cookie_consent_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
+
+    <meta name="google-site-verification" content="zddSG9Su1C2rFiH4lBf8Hq7b27P57AS9epwNWWRNly8" />
+
+    <title>
+      {%block title %}UsandoPy {{ tutorialtitle }}
+      {%endblock%}
+    </title>
+    <link rel="shortcut icon" href="{% static 'css/assets/upy.png' %}" />
+    {% block description %}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image" content="{{ object.featured_image.url }}" />
+    <meta
+      property="og:image:secure_url"
+      content="{{ object.featured_image.url }}"
+    />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta name="twitter:image" content="{{ object.featured_image.url }}" />
+    <meta name="twitter:card" content="summary" />
+
+    <meta property="og:title" content="{{ title }}" />
+    <meta
+      property="og:description"
+      content="{{ description|truncatechars:160 }}"
+    />
+
+    <meta name="title" content="{{ title }}" />
+    <meta name="description" content="{{ description|truncatechars:160 }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <meta name="author" content="{{ author }}" />
+    <meta name="robots" content="index, follow" />
+    {% endblock %}
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Google Fonts Roboto -->
+
+    {% block extra_css %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+    <!-- Your custom styles (optional) -->
+
+    <!-- CUSTOM CSS -->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/agate.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS65HDVLGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VS65HDVLGL');
+    </script>
+
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+     crossorigin="anonymous"></script>
+    {% endblock %} {% display_cookie_consent %}
+  </head>
+  <body style="background-color:white">
+    <style>
+      a {
+        color: #212529;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        text-decoration: none solid rgb(33, 37, 41);
+        text-align: left;
+      }
+    </style>
+    <!-- Navbar -->
+
+    {% block navbar %} {% include 'bases_es/navbar.html' %} {% endblock %}
+
+    <!-- Navbar -->
+
+    <!-- Home -->
+    {% block home %}
+    <!--  block content -->
+    {% block content %} {% endblock content %}
+    <!-- /.content -->
+    {% endblock home %}
+    <!-- /.Home -->
+
+    <!--  block footer -->
+    {% block footer %} {% include 'bases/footer.html' %}{% endblock footer %}
+    <!-- /.footer -->
+
+    {% block js_script %}
+
+    <!-- Optional JavaScript -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <!-- 3rd party JavaScript -->
+    <script
+      id="dsq-count-scr"
+      src="//pangolano.disqus.com/count.js"
+      async
+    ></script>
+
+
+
+    {% endblock %}
+  </body>
+</html>

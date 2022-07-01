@@ -1,0 +1,96 @@
+{% extends 'bases/base.html' %} {% load static %}
+<!--  block content -->
+{%block title%} {%if date or category%} {%if date%} Blog - {{date|date:"F Y"}}
+{% endif%} {% if category %} Blog - {{ category }} {% endif %} {% endif %}
+{%endblock%} {%block content %}
+<!-- banner-->
+{% block banner %} {% endblock %}
+<!-- /. banner -->
+<div class="container pt-5">
+  <div class="row row-cols-1 row-cols-md-3 mb-4">
+    <div class="pt-5 mx-0 px-0">
+      <!-- breadcrumbs-schema -->
+      {% if date or category %}
+      <ol
+        itemscope
+        itemtype="http://schema.org/BreadcrumbList"
+        class="breadcrumb white"
+      >
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="{% url 'index' %}">
+            <span class="badge badge-default">Home-Blog</span></a
+          >
+          <meta itemprop="position" content="1" />
+        </li>
+
+        {% if date %}
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="/">
+            <span class="badge primary-color">Arquivo</span></a
+          >
+          <meta itemprop="position" content="2" />
+        </li>
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="/">
+            <span class="badge blue-grey darken-1"
+              >{{ date|date:"F Y"}}</span
+            ></a
+          >
+          <meta itemprop="position" content="3" />
+        </li>
+        {% endif %} {% if category %}
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="/">
+            <span class="badge primary-color">Categoria</span></a
+          >
+          <meta itemprop="position" content="2" />
+        </li>
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="">
+            <span class="badge blue-grey darken-1"> {{ category }}</span></a
+          >
+          <meta itemprop="position" content="3" />
+        </li>
+        {% endif %}
+      </ol>
+      {% endif %}
+      <!-- end -->
+    </div>
+    <!-- postagens-->
+    {% block postagens %} {% include 'posts/postagens.html' %} {% endblock %}
+    <!-- /. postagens -->
+
+    <!-- postagens-->
+    {% block categoria %} {% include 'posts/categoria-d.html' %} {% endblock %}
+    <!-- /. postagens -->
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- /.content -->

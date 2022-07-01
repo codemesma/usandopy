@@ -1,0 +1,78 @@
+{% extends 'bases/base.html' %} {% load static %}
+<!--  block content -->
+{%block title %} Sobre {%endblock%} {% block content %}
+
+<div class="container pt-5">
+  <div class="row row-cols-1 row-cols-md-1 pt-5 mb-4">
+    <div class="col-lg-12">
+      <h1>Sobre nós</h1>
+
+      {% for s in sobre %}
+      <!--Card-->
+      <div class="card z-depth-0 mb-4">
+        <div class="card-header font-weight-bold">
+          <span class="pr-2">{{s.nome}}</span>
+          <span class="pull-right">
+            {% if s.facebook %}
+            <a href="{{s.facebook}}" target="_blank">
+              <i class="fab fa-facebook-f mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if s.linkedin %}
+            <a href="{{s.linkedin}}" target="_blank">
+              <i class="fab fa-linkedin mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if s.twiter %}
+            <a href="{{s.twiter}}" target="_blank">
+              <i class="fab fa-twitter mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if s.web %}
+            <a href="{{s.web}}" target="_blank">
+              <i class="fas fa-blog mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if s.instagram %}
+            <a href="{{s.instagram}}" target="_blank">
+              <i class="fab fa-instagram mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if s.youtube %}
+            <a href="{{s.youtube}}" target="_blank">
+              <i class="fab fa-youtube mr-3"></i>
+            </a>
+            {% else %} {% endif %}
+          </span>
+        </div>
+
+        <!--Card content-->
+        <div class="card-body">
+          <div class="media d-block d-md-flex mt-3">
+            <img
+              class="d-flex mb-3 mx-auto z-depth-1"
+              src="{{ s.imagem.url }}"
+              alt="Generic placeholder image"
+              style="width: 100px;"
+            />
+            <div class="media-body text-md-left ml-md-3 ml-0">
+              <h5 class="mt-0 font-weight-bold">{{s.nome}}</h5>
+              {{s.descricao}} Você é livre (absolutamente!) Para copiar e
+              distribuir o conteúdo e o código (com as condições descritas
+              abaixo).
+              <br />
+              A licença para todo o código está sob a licença MIT. Você pode
+              baixar todo o código-fonte do repositório do Github. A licença do
+              conteúdo é Creative Commons Attribution-ShareAlike . Isso
+              significa que você é livre para compartilhar e modificar esses
+              trabalhos, desde que vincule o conteúdo ao seu URL original.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.Card-->
+      {% endfor%}
+    </div>
+  </div>
+</div>
+<!-- equipa-->
+{% block equipa %} {% include 'bases/equipa.html' %} {% endblock %}
+<!-- /. equipa -->
+{% endblock content %}
+
+<!-- /.content -->

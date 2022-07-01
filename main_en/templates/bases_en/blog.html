@@ -1,0 +1,108 @@
+<style>
+  font {
+    color: #212529;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    background-color: #000000;
+    font-weight: 300;
+    line-height: 24px;
+    vertical-align: baseline;
+    letter-spacing: normal;
+    word-spacing: 0px;
+    margin: 0px 0px 0px;
+    padding: 0px;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none solid rgb(33, 37, 41);
+    text-align: left;
+    text-indent: 0px;
+  }
+  a:hover {
+    color: #445879;
+  }
+  h1 {
+    color: #29303b;
+    font-family: "sf pro display", -apple-system, BlinkMacSystemFont, "segoe ui",
+      Roboto, Helvetica, Arial, sans-serif, "apple color emoji",
+      "segoe ui emoji", "segoe ui symbol";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0px 0px 0px;
+    text-transform: none;
+    text-decoration: solid rgb(41, 48, 59);
+    text-align: start;
+  }
+
+
+  .card-footer {
+    color: #686f7a;
+    font-size: 12px;
+  }
+</style>
+
+<!--Section: Tutorial -->
+<div class="my-2 " style="background-color: #ffffff">
+    <h4 class="my-2 text-left mx-0 px-1 text-white font-weight-bolder py-2 rounded" style="background-color: #39C0ED;">
+      <i class="far fa-clock"></i> Latest Posts Tutorial
+    </h4 >
+    <!--Grid row Tutorial -->
+    <div class="row px-lg-2 px-md-2 px-sm-4">
+      {% for t in tutorial %}
+
+      <div class="col-lg-6 col-md-6 col-sm-12 d-flex align-self-stretch mx-md-0 mx-sm-0 rounded mb-3">
+        <div class="col-lg-5 rounded px-0">
+          <!--Image-->
+          <div class="view overlay z-depth-0-half rounded px-0">
+            <img
+              src="{{ t.featured_image.url }}"
+              alt="Responsive image"
+              class="img-fluid"
+            />
+            <a href="{% url 'tutorial-view_en' t.slug %}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-7 px-lg-2 px-md-2 px-sm-4 py-0 my-0">
+          <!--Excerpt-->
+          <div class="py-0 my-lg-0 my-md-0 my-sm-4">
+            <a href="{% url 'tutorial-view_en' t.slug %}">
+              <h1 class="">
+                {{t.title}}
+              </h1>
+            </a>
+            <div class="text-muted text-left">
+              <a
+                href="{% url 'categoria-view_en' t.category.slug  %}"
+                class="light-blue-text"
+              >
+                <span class="badge unique-color float-left py-1" style="background-color: #39C0ED;"
+                  ><strong class='h7'> {{t.category}}</strong>
+                </span>
+              </a>
+              <br />
+              <span class="py-0 my-0" style="font-size: 12px"
+                ><i class="pl-2 far fa-calendar"></i>
+                {{t.updated_on}}</span
+              >
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+        <div class="col-md-12 mb-0 z-depth-0 mx-0">
+            <!-- ads-->
+            <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+            <!-- /. ads -->
+        </div>
+    </div>
+    <!--Grid row Tutorial -->
+</div>
+<!--/Section: Tutorial-->
+
+
+

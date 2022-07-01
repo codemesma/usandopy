@@ -1,0 +1,56 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+{% load countries %}
+{% load quiz_extras %}
+
+{% block content %}
+  {% if request.user.is_authenticated %}
+	 {% include 'classroom/students/_header.html' with active='students' %}
+  {% else %}
+    {% include 'classroom/_guest_header.html' with active='students' %}
+  {% endif %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'students:student_list' %}">Estudantes</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{student.user.username}}</li>
+    </ol>
+</nav>
+<div class="row">
+  <div class="col-md-4">
+    {% if student.photo %}
+    <img
+      src="{{student.photo.url}}"
+      alt=""
+      
+      class="img-fluid"
+    />
+    {% else %}
+    <img
+      src="{{ student.user.username|gravatar_url:200 }}"
+      alt=""
+     
+      class="img-fluid"
+    />
+    {% endif %}
+  </div>
+  <div class="col-md-8">
+  	<div class="card">
+    <table class="table mb-0">
+      
+      <tbody>
+      	<tr><td>Email</td><td>************</td></tr>
+      	<tr><td>Nome de usuário</td><td>{{student.user.username}}</td></tr>
+        <tr><td>Pais</td><td>{% get_country student.country as country %}{{ country.name }}</td></tr>
+      	<tr><td>PONTOS</td><td><span class="badge bg-primary">{{student.score}}</span></td></tr>
+      </tbody>
+    </table>
+	</div>
+  </div>
+</div><hr>
+<h4>Tópicos so estudante</h4>
+{% for subject in subjects %}
+	<span class="badge badge-primary" style="background-color:{{subject.quiz__subject__color}}">
+		{{subject.quiz__subject__name}}
+	</span> x {{subject.score}}
+{% endfor %}
+{% endblock %}

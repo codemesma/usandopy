@@ -1,0 +1,146 @@
+{% extends 'site_en/noticia/index.html' %} {% load static %} {% block content %}
+<div class="container-scroller">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="text-center">
+          <h1 class="text-center mt-3 font-weight-normal">{{category}}</h1>
+          <p class="text-secondary fs-16">
+            {{category.description|safe}}
+          </p>
+        </div>
+        <h5 class="text-muted font-weight-medium mb-3">{{ category }}</h5>
+      </div>
+    </div>
+
+    <div class="row">
+      {% for news in object_list %} {% if forloop.first %}
+      <div class="col-lg-6 mb-5 mb-sm-2">
+        <div class="position-relative image-hover">
+          <a href="{{ news.get_absolute_url }}" target="_self">
+            <img
+            src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+            alt="feature-top"
+            class="img-fluid"
+            alt="world-news"
+          />
+          </a>
+          
+          <span class="thumb-title badge bg-primary py-1">{{category}}</span>
+        </div>
+        <h1 class="dark-text mt-3">
+          <a class="text-dark h2" href="{{ news.get_absolute_url }}" target="_self">
+            {{ news.title }}
+          </a>
+        </h1>
+        <p class="fs-15 font-weight-normal">
+          {{ news.description|safe|truncatechars:255 }}
+        </p>
+      </div>
+      {% endif %} {% endfor %}
+      <div class="col-lg-6 mb-5 mb-sm-2">
+        <div class="row">
+          {% for news in post_top %}
+          <div class="col-sm-6 mb-5 mb-sm-2">
+            <div class="position-relative image-hover">
+              <a href="{{ news.get_absolute_url }}" target="_self">
+                <img
+                src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+                class="img-fluid"
+                alt="world-news"
+              />
+              </a>
+              
+              <span class="thumb-title badge bg-primary py-1">{{ news.category }}</span>
+            </div>
+            <h5 class="font-weight-normal mt-3">
+                <a href="{{ news.get_absolute_url }}" style="color:#333333; font-size: 18px; " target="_self"
+                >{{ news.title }}
+                </a>
+            </h5>
+            
+          </div>
+          {% endfor %}
+          
+        </div>
+        <!-- Ads -->
+        <div class="row mt-3">
+          <div class="col-sm-12 mb-5 mb-sm-2">
+            <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+          </div>
+        </div>
+        <!--/ Ads -->
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-sm-12">
+        <h5 class="font-weight-medium mb-3">More about {{category}}</h5>
+      </div>
+    </div>
+    <div class="row mb-4">
+      {% for news in post_all %}
+      <div class="col-sm-3 mb-5 mb-sm-2">
+        <div class="position-relative image-hover">
+          <img
+            src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+            class="img-fluid"
+            alt="world-news"
+          />
+          <span class="thumb-title badge bg-primary py-1">{{news.category}}</span>
+        </div>
+        <h5 class="font-weight-normal mt-3">
+            <a href="{{ news.get_absolute_url }}" target="_self"
+            >{{ news.title }}
+            </a>
+        </h5>
+      </div>
+      {% endfor %}
+    </div>
+    
+
+    {% if is_paginated %}
+    <div class="">
+      <div class="pagination-area">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a
+                class="page-link"
+                href="?page={{ page_obj.previous_page_number }}"
+                aria-label="Previous"
+              >
+                <i class="icofont-stylish-left"></i>
+              </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link">&laquo;</a>
+            </li>
+            {% endif %} {% for i in page_obj.paginator.page_range %} {% if page_obj.number == i %}
+            <li class="page-item active">
+              <a class="page-link">{{ i }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+            </li>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <li class="page-item">
+              <a href="?page={{ page_obj.next_page_number }}" class="page-link"
+                >&raquo;</a
+              >
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+              <a class="page-link">&raquo;</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

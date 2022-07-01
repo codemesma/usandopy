@@ -1,0 +1,59 @@
+{% extends 'bases/base.html' %} {% load static %}
+<!--  block content -->
+
+{% block content %}
+<!-- banner-->
+{% block banner %} {% endblock %}
+<!-- /. banner -->
+<div class="container pt-5">
+  <div class="row row-cols-1 row-cols-md-3 mb-4">
+    <div class="pt-5 mx-0 px-0">
+      <!-- breadcrumbs-schema -->
+      <ol
+        itemscope
+        itemtype="http://schema.org/BreadcrumbList"
+        class="breadcrumb white"
+      >
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a itemprop="item" href="{% url 'index' %}">
+            <span class="badge" style="background-color: #45647a;"
+              >Blog</span
+            ></a
+          >
+          <meta itemprop="position" content="1" />
+        </li>
+
+        <li
+          class="pr-2"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="http://schema.org/ListItem"
+        >
+          <a class="h2" itemprop="item" href="/">
+            <span class="badge" style="background-color: #f7992d;"
+              >Search Result</span
+            ></a
+          >
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+      <!-- end -->
+    </div>
+    <!-- postagens-->
+    {% block postagens %} {% include 'posts_en/postagens-sea.html' %} {%endblock %}
+    <!-- /. postagens -->
+
+    <!-- postagens-->
+    {% block categoria %} {% include 'posts_en/categoria-d.html' %} {% endblock %}
+    <!-- /. postagens -->
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- /.content -->

@@ -1,0 +1,56 @@
+{% extends 'bases_en/base.html' %} {% load static %}
+<!--  block content -->
+
+{% block content %}
+
+<!-- Banner-->
+{% block banner %} {% include 'bases_en/banner.html' %} {% endblock %}
+<!-- /. Banner -->
+
+<div class="container-fluid mt-3" style="background-color: #fafafa">
+  <div class="row">
+
+    <!--Ads-->
+
+    <div class="col-md-2 mb-0 z-depth-0">
+      <!-- ads-->
+      <div class="px-0 my-2 mb-sm-4">
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+          crossorigin="anonymous"
+        ></script>
+        <!-- lateral -->
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-1810411345881098"
+          data-ad-slot="6899621083"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+      <!-- /. ads -->
+    </div>
+
+    <div class="col-md-10 mb-0 z-depth-0">
+      <!-- categoria-->
+      {% block categoria %} {% include 'bases_en/categoria.html' %} {% endblock %}
+      <!-- /. categoria -->
+    </div>
+    <div class="col-md-12 mb-0 z-depth-0 my-2">
+        <!-- ads-->
+        <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+        <!-- /. ads -->
+    </div>
+
+
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- /.content -->

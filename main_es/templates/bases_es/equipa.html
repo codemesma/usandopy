@@ -1,0 +1,83 @@
+<!-- Testimonials -->
+{% load static %}
+<style>
+  @media only screen and (min-width: 1026px) {
+    #fadeshow11 {
+      display: none;
+    }
+  }
+</style>
+
+<section class="testimonials text-center my-0 py-3">
+  <div class="container mt-0 pt-0 pb-4">
+    <h3 class="mb-2 text-left mx-0 px-0 pt-4">
+      <img
+        class="my-0 py-0 pr-1"
+        src="https://img.icons8.com/ios/30/000000/conference.png"
+      />Este site foi criado e é mantido por
+    </h3>
+    <hr class="mb-5" />
+    <div class="row">
+      {% for e in equipa %}
+
+      <div
+        class="col-lg-3 col-md-3 col-sm-12 d-flex align-self-stretch py-0 my-0"
+      >
+        <div
+          class="testimonial-item mx-auto mb-5 mb-lg-0 py-3 rounded z-depth-0 border white mt-1"
+        >
+          <img
+            style="width: 80px; height: 80px;"
+            class="img-fluid rounded-circle mb-3 z-depth-1"
+            src="{{ e.imagem.url }}"
+            alt=""
+          />
+          <h5>{{e.nome}}</h5>
+          <p class="font-weight-light mb-0 mx-2">
+            {{e.descricao | safe}}
+          </p>
+          <!-- Social icons -->
+          <div class="py-1">
+            {% if e.facebook %}
+            <a href="{{e.facebook}}" target="_blank">
+              <i class="fab fa-facebook-f mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if e.linkedin %}
+            <a href="{{e.linkedin}}" target="_blank">
+              <i class="fab fa-youtube mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if e.twiter %}
+            <a href="{{e.twiter}}" target="_blank">
+              <i class="fab fa-twitter mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if e.instagram %}
+            <a href="{{e.instagram}}" target="_blank">
+              <i class="fab fa-instagram mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if e.git %}
+            <a href="{{e.git}}" target="_blank">
+              <i class="fab fa-github mr-3"></i>
+            </a>
+            {% else %} {% endif %} {% if e.web %}
+            <a href="{{e.web}}" target="_blank">
+              <i class="fas fa-id-card mr-3"></i>
+            </a>
+            {% else %} {% endif %}
+          </div>
+
+          <!-- Social icons -->
+        </div>
+      </div>
+      {% endfor %}
+      <div
+        class="category-block mx-0 px-0 flex-fill pt-5 pb-0 mb-0 my-0 z-depth-0"
+      ></div>
+
+      <div
+        class="category-block mx-0 px-0 flex-fill pt-5 pb-0 mb-0 my-0 z-depth-0"
+      ></div>
+    </div>
+  </div>
+
+  <div id="fadeshow11" class="mt-4 mb-0 pb-0"></div>
+</section>

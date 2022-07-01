@@ -1,0 +1,16 @@
+{% extends 'quiz/base.html' %} {% load crispy_forms_tags %} {% block content %}
+<h2 class="mb-3">Alterar definições</h2>
+<form method="post" novalidate enctype="multipart/form-data">
+  {% csrf_token %} 
+  <div class="form-row">
+    <div class="form-group col-6">{{ form.interests|as_crispy_field }}</div>
+    <div class="form-group col-6">{{ form.country|as_crispy_field }}</div>
+    <div class="form-group col-12">{{ form.photo|as_crispy_field }}</div>
+  </div>
+  
+  <button type="submit" class="btn btn-success">Salvar alterações</button>
+  <a href="{% url 'students:quiz_list' %}" class="btn btn-outline-secondary"
+    >Não importa</a
+  >
+</form>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% load blog_tags %}
+
+<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+  <div class="sidebar">
+    <!-- Search Widget -->
+    <div
+      class="widget search p-0 border rounded"
+      style="background-color: #f8f9fa;"
+    >
+      <form class="" action="{% url 'blog_search_en' %}" method="get">
+        {% csrf_token %}
+        <div class="input-group" >
+          <input
+          style="background-color: #f7992d;"
+            name="q"
+            type="text"
+            class="form-control px-3 z-depth-1 white"
+            placeholder="Search for..."
+          />
+          <span class="input-group-addon" style="background-color: #f7992d;"><i class="fa fa-search"></i></span>
+        </div>
+      </form>
+    </div>
+    <div class=" px-0 ">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- lateral -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="6899621083"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Category Widget -->
+    <div
+      class="widget archive border rounded px-0 py-0"
+      style="background-color: white;"
+    >
+      <!-- Widget Header -->
+      <h5 class="widget-header white-text py-2 px-2" style="background-color: #f7992d;">
+        Categories
+      </h5>
+      <ul class="category-list px-3">
+        {% for category in categories_list %}
+        <li>
+          <a href="{% url 'selected_category_en' category_slug=category.slug %}"
+            >{{ category }}
+            <span class="badge float-right " style="background-color: #f7992d; "
+              >{{ category| category_posts }}
+            </span>
+          </a>
+        </li>
+
+        {% endfor %}
+      </ul>
+    </div>
+    <!-- Archive Widget -->
+    <div class=" px-0 ">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- lateral -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="6899621083"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <div class=" px-0 ">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+             crossorigin="anonymous"></script>
+        <!-- lateral -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-1810411345881098"
+             data-ad-slot="6899621083"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+  </div>
+</div>

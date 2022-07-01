@@ -1,0 +1,41 @@
+<!--related-->
+<div
+  class="card mb-4 wow fadeIn z-depth-0 border rounded"
+>
+  <div class="card-header white-text py-2 px-2 font-weight-bold" style="background-color: #f7992d;">
+    Artigos recentes
+  </div>
+
+  <!--Card content-->
+  <div class="card-body">
+    <ul class="list-unstyled">
+      {% for post in recent_posts %}
+      <li class="media pb-3">
+        <div class="media-body">
+          <a href="{% url 'blog_post_view' blog_slug=post.slug %}">
+            <h5 class="mt-0 mb-2 font-weight-normal h6">
+              {{ post.title }}
+            </h5>
+          </a>
+          <div class="blog_cat_author">
+            <span class="heading"
+              ><i class="far fa-clock"></i>
+              {{post.updated_on|date:"F d, Y"}}
+            </span>
+            <a
+              href="{% url 'selected_category' category_slug=post.category.slug %}"
+              class="category"
+            >
+              <span class="badge unique-color pa-2">{{ post.category }} </span>
+            </a>
+            <br clear="all" />
+          </div>
+        </div>
+      </li>
+      <hr />
+
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<!--/.related-->

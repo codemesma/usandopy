@@ -1,0 +1,123 @@
+{% load static %}
+
+<!--Navbar-->
+<nav
+  class="navbar navbar-expand-lg navbar-dark fixed-top z-depth-1 py-1"
+  style="background-color: white"
+>
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a
+      class="navbar-brand m-0 p-0 font-weight-normal text-capitalize"
+      href="{% url 'home-page_es' %}"
+      ><img
+        class="m-0 p-0"
+        style="height: 37px"
+        src="{% static 'py.png' %}"
+        alt=""
+    /></a>
+
+    <!-- Collapse button -->
+    <button
+      class="navbar-toggler text-dark black"
+      type="button"
+      data-toggle="collapse"
+      data-target="#basicExampleNav"
+      aria-controls="basicExampleNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon text-darkt"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+      <!-- Links -->
+
+      <ul class="navbar-nav mr-auto ml-lg-1 pl-lg-3">
+        <li class="nav-item mx-2">
+          <a
+            class="nav-link font-weight-normal text-capitalize text-dark h6"
+            href="{% url 'home-page_es' %}"
+            ><i class="fas fa-home"></i> Home
+          </a>
+        </li>
+
+        <li class="nav-item mx-2">
+          <a
+            class="nav-link font-weight-normal text-capitalize text-dark h6"
+            href="{% url 'index' %}"
+            ><i class="fab fa-blogger"></i> Blog</a
+          >
+        </li>
+
+        <li class="nav-item mx-2">
+          <a
+            class="nav-link font-weight-normal text-capitalize text-dark h6"
+            href="https://www.youtube.com/channel/UCMqGy4xIIGs01ZVcBv0B8Cw"
+            target="_blank"
+            ><i class="fab fa-youtube"></i> YouTube</a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle font-weight-normal text-capitalize text-dark h6"
+            href="#"
+            id="navbarDropdownMenuLink"
+            data-toggle="dropdown"
+            >Proyectos</a
+          >
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <a class="dropdown-item" href="https://www.usandopy.com/categoria/projetos-python-iniciantes/">Proyectos de Python principiantes</a>
+            <a class="dropdown-item" href="https://www.usandopy.com/categoria/projetos-python-intermediarios/">Proyectos intermedios de Python</a>
+            <a class="dropdown-item" href="https://www.usandopy.com/categoria/projetos-avancados-de-python/">Proyectos avanzados de Python</a>
+          </div>
+        </li>
+        <li class="nav-item mx-2">
+          <a
+            class="nav-link font-weight-normal text-capitalize text-dark h6"
+            href="{% url 'sobre_es' %}"
+          >
+          Sobre nosotros</a
+          >
+        </li>
+        <li class="nav-item mx-2 d-none">
+          <a
+            class="nav-link font-weight-normal text-capitalize text-dark h6"
+            href="{% url 'feedback' %}"
+          >
+            Contacta-nos</a
+          >
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto ml-lg-1 pl-lg-3">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle font-weight-normal text-capitalize text-dark h6"
+            href="#"
+            id="navbarDropdownMenuLink"
+            data-toggle="dropdown"
+            ><i class="fas fa-language"></i> Change language</a
+          >
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <a class="dropdown-item font-weight-bold" href="https://www.usandopy.com/">Portuguese</a>
+            <a class="dropdown-item font-weight-bold" href="https://www.usandopy.com/es">Spanish</a>
+            <a class="dropdown-item font-weight-bold" href="https://www.usandopy.com/en">English</a>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+  </div>
+</nav>
+<!--/.Navbar-->

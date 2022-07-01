@@ -1,0 +1,10 @@
+boto
+django-simple-pagination
+django-storages
+Pillow
+requests
+gunicorn
+whitenoise
+dj-database-url
+psycopg2
+microurl

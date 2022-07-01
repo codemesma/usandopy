@@ -1,0 +1,76 @@
+{% load static %}
+
+<div class="col-md-5">
+    <div class="feature_static_wrapper">
+        <div class="feature_article_img">
+            <img style="height: 269.717px; width: 457.5px;" class="img-responsive" src="{% if trending.thumbnail_url %}  {{ trending.thumbnail_url }} {% else %}{{ trending.thumbnail.url }}{% endif %}" alt="feature-top">
+        </div>
+        <!-- feature_article_img -->
+
+        <div class="feature_article_inner">
+            <div class="tag_lg purple">Trending</div>
+            <div class="feature_article_title">
+                <h1><a href="{{ trending.get_absolute_url }}" target="_self">{{ trending.title }}</a>
+                </h1>
+            </div>
+            <!-- feature_article_title -->
+
+            <div class="feature_article_date"><a href="#" target="_self">{{ trending.author|title }}</a>, {{ trending.timestamp|date:"j M Y" }}</div>
+            <!-- feature_article_date -->
+
+            <div class="feature_article_content">
+                {{ trending.description|truncatechars:100 }}
+            </div>
+            <!-- feature_article_content -->
+
+            <div class="article_social">
+                <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
+                <span><i class="fa fa-comments-o"></i><a href="{{ trending.get_absolute_url }}">{{ trending.get_comment_count }}</a>Comments</span>
+            </div>
+            <!-- article_social -->
+
+        </div>
+        <!-- feature_article_inner -->
+
+    </div>
+    <!-- feature_static_wrapper -->
+
+</div>
+<!-- col-md-5 -->
+
+<div class="col-md-5">
+    <div class="feature_static_last_wrapper">
+        <div class="feature_article_img">
+            <img style="height: 269.717px; width: 457.5px;" class="img-responsive" src="{% if editor_choice.thumbnail_url %}  {{ editor_choice.thumbnail_url }} {% else %}{{ editor_choice.thumbnail.url }}{% endif %}" alt="feature-top">
+        </div>
+        <!-- feature_article_img -->
+
+        <div class="feature_article_inner">
+            <div class="tag_lg blue">Popular</div>
+
+            <div class="feature_article_title">
+                <h1><a href="{{ editor_choice.get_absolute_url }}" target="_self">{{ editor_choice.title }}</a></h1>
+            </div>
+            <!-- feature_article_title -->
+
+            <div class="feature_article_date"><a href="#" target="_self">{{ editor_choice.author|title }}</a>, {{ editor_choice.timestamp|date:"j M Y" }}</div>
+            <!-- feature_article_date -->
+
+            <div class="feature_article_content">
+                {{ editor_choice.description|truncatechars:100 }}
+            </div>
+            <!-- feature_article_content -->
+
+            <div class="article_social">
+                <span><i class="fa fa-share-alt"></i><a href="#">424</a>Shares</span>
+                <span><i class="fa fa-comments-o"></i><a href="{{ editor_choice.get_absolute_url }}">{{ editor_choice.get_comment_count }}</a>Comments</span>
+            </div>
+            <!-- article_social -->
+
+        </div>
+        <!-- feature_article_inner -->
+
+    </div>
+    <!-- feature_static_wrapper -->
+
+</div>

@@ -1,0 +1,196 @@
+<div class="container">
+    <div class="row">
+      <!-- Destake -->
+      <div class="col-lg-8">
+        <div class="card mb-5 mt-5 mb-sm-2">
+          <div class="position-relative image-hover">
+            <a href="{{ hot_news.get_absolute_url }}" target="_self">
+              <img
+              src="{% if hot_news.thumbnail_url %}  {{ hot_news.thumbnail_url }} {% else %}{{ hot_news.thumbnail.url }}{% endif %}"
+              class="img-fluid"
+              alt="world-news"
+            />
+            </a>
+            <span class="thumb-title badge bg-primary py-1">{{ hot_news.category }}</span>
+          </div>
+          <h1 class="dark-text mt-3">
+            <a class="text-dark h2" href="{{ hot_news.get_absolute_url }}" target="_self">{{ hot_news.title }}</a>
+          </h1>
+          <span class="fs-5">
+            {{ hot_news.description|safe|truncatechars:250 }}
+          </span>
+        </div>
+      </div>
+      <!-- Destake -->
+
+      <!-- catalog-2 -->
+      <div class="col-lg-4">
+        <h3 class="mt-5 mt-sm-2 pt-3 font-weight-normal " style="font: size 14px;">Alguém disse</h3>
+        <hr>
+        <div class="row">
+
+          {% for news in post_catalog_two %}
+          <div class="col-sm-6">
+            <div class="py-3 border-bottom">
+              <div class="d-flex align-items-center pb-2">
+                <img
+                  src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+                  class="img-lg img-rounded mr-2"
+                  alt="thumb"
+                />
+                <span class="fs-12 text-muted">{{ news.title }}</span>
+              </div>
+              <p class="fs-15 font-weight-normal">
+                {{ news.description|safe|truncatechars:150 }}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+          <!-- Ads -->
+          <div class="col-sm-12">
+            <div class="py-3 border-bottom">
+              <div class="d-flex align-items-center pb-2">
+                <iframe data-aa='2017003' src='//acceptable.a-ads.com/2017003' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>
+
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- / catalog-2 -->
+    </div>
+
+    <!-- Catalog-1 -->
+    <div class="world-news px-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex position-relative  float-left">
+            {% for news in post_catalog_one_title %}
+            <h3 class="section-title">{{news.category}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for news in post_catalog_one %}
+        <div class="col">
+          <div class="card h-80 z-depth-0">
+            <a href="{{ news.get_absolute_url }}" target="_self">
+              <img src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+            </a>
+            <div class="card-body px-1">
+              <h1 class="card-title h4 ">
+                <a class="text-dark px-0 py-1" href="{{ news.get_absolute_url }}" style="font-size: 15px; " target="_self">{{ news.title }}</a>
+              </h1>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- / Trending -->
+
+    <div class="editors-news px-3">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="d-flex position-relative float-left">
+            <h3 class="section-title">Popular</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-lg-6  mb-5 mb-sm-2">
+          <div class="position-relative image-hover ">
+            <a href="{{ editor_choice.get_absolute_url }}" target="_self">
+              <img
+              src="{% if editor_choice.thumbnail_url %}  {{ editor_choice.thumbnail_url }} {% else %}{{ editor_choice.thumbnail.url }}{% endif %}"
+              class="img-fluid "
+              alt="world-news"
+            />
+            </a>
+            <span class="thumb-title badge bg-primary py-1">{{editor_choice.category}}</span>
+          </div>
+          <h1 class="dark-text mt-3 px-3">
+            <a class="text-dark h2" href="{{ editor_choice.get_absolute_url }}" style="color:#333333; font-size: 25px; " target="_self">{{ editor_choice.title }}</a>
+          </h1>
+          <p class="fs-5" style="color:#333333; font-size: 25px; ">
+            {{ editor_choice.description|safe|truncatechars:250 }}
+          </p>
+        </div>
+        <div class="col-lg-6  mb-5 mb-sm-2 px-3">
+          <div class="row">
+            {% for news in post_catalog_three %}
+            <div class="col-sm-6  mb-3 mb-sm-2">
+              <div class="position-relative image-hover">
+                <a href="{{ news.get_absolute_url }}" class="font-weight-bold text-dark pt-2">
+                  <img
+                  src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}"
+                  class="img-fluid"
+                  alt="world-news"
+                />
+                </a>
+                <span class="thumb-title badge bg-primary py-1">{{news.category}}</span>
+              </div>
+
+              <h5 class="font-weight-normal mt-3">
+                <a href="{{ news.get_absolute_url }}" style="color:#333333; font-size: 18px; " class="text-dark pt-2"
+                >{{ news.title }}</a>
+              </h5>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div
+        <div class="col-lg-12  mb-5 mb-sm-2">
+                <script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+              crossorigin="anonymous"
+            ></script>
+            <!-- lateral -->
+            <ins
+              class="adsbygoogle"
+              style="display: block"
+              data-ad-client="ca-pub-1810411345881098"
+              data-ad-slot="6899621083"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            </div>
+      </div>
+    </div>
+
+    <!-- Catalog-5 -->
+    <div class="world-news px-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="d-flex position-relative  float-left">
+            {% for news in post_catalog_five_title %}
+            <h3 class="section-title ">{{news.category}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4 g-4">
+        {% for news in post_catalog_five %}
+        <div class="col">
+          <div class="card h-80 z-depth-0">
+            <a href="{{ news.get_absolute_url }}" target="_self">
+              <img src="{% if news.thumbnail_url %}  {{ news.thumbnail_url }} {% else %}{{ news.thumbnail.url }}{% endif %}" class="card-img-top" alt="Los Angeles Skyscrapers"/>
+            </a>
+            <div class="card-body px-1">
+              <h1 class="card-title h4 ">
+                <a class="text-dark px-0 py-1" href="{{ news.get_absolute_url }}" style="font-size: 15px; " target="_self">{{ news.title }}</a>
+              </h1>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>

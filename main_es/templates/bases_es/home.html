@@ -1,0 +1,28 @@
+{% extends 'bases_es/base.html' %} {% load static %}
+<!--  block content -->
+
+{% block content %}
+
+<!-- Banner-->
+{% block banner %} {% include 'bases_es/banner.html' %} {% endblock %}
+<!-- /. Banner -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-0 z-depth-0">
+            <!-- categoria-->
+            {% block categoria %} {% include 'bases_es/categoria.html' %} {% endblock %}
+            <!-- /. categoria -->
+        </div>
+
+        <div class="col-md-6 mb-0 z-depth-0">
+            <!-- blog-->
+            {% block blog %} {% include 'bases_es/blog.html' %} {% endblock %}
+            <!-- /. blog -->
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- /.content -->

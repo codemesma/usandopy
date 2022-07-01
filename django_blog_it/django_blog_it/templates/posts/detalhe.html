@@ -1,0 +1,379 @@
+{% extends 'bases/base.html' %} {% load static %}
+<!--  block content -->
+{% block title %} {{ blog_name.title }} {%endblock %} {% block content %}
+{%block description %}
+<link rel="canonical" href="{{ request.build_absolute_uri }}" />
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:image" content="{{ blog_name.featured_image.url }}" />
+<meta
+  property="og:image:secure_url"
+  content="{{ blog_name.featured_image.url }}"
+/>
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta name="twitter:image" content="{{ blog_name.featured_image.url }}" />
+<meta name="twitter:card" content="summary" />
+
+<meta property="og:title" content="{{ blog_name.title }}" />
+<meta property="og:description" content="{{ description|truncatechars:160 }}" />
+
+<meta name="title" content="{{ blog_name.title }}" />
+<meta name="description" content="{{ description|truncatechars:160 }}" />
+<meta name="keywords" content="{{ keywords }}" />
+<meta name="author" content="{{ author }}" />
+<meta name="robots" content="index, follow" />
+{% endblock %}
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  em {
+    color: #333333;
+    font-weight: bolder;
+  }
+
+  p {
+    color: #333333;
+    font-family: "Segoe UI";
+    font-size: 17.5px;
+    letter-spacing: normal;
+    word-spacing: 0px;
+    padding: 0px;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0px 0px 12px;
+    text-align: justify;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-indent:0px;
+  }
+  h1 {
+    color:#001c3b;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 23.1px;
+    margin: 0px 0px 8px;
+    text-transform: none;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-align: left;
+  }
+  h2 {
+    color:#001c3b;
+    font-family: "proxima-nova", sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 23.1px;
+    margin: 30px 0px 8px;
+    text-transform: none;
+    text-decoration: none solid rgb(0, 28, 59);
+    text-align: left;
+  }
+</style>
+<!-- banner-->
+<!-- /. banner -->
+<div class="container pt-5">
+  <div class="row row-cols-1 row-cols-md-2 pt-5 mb-4">
+    <!-- postagem-->
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0 white">
+      <div class="pt-4">
+        <h1><strong>{{ blog_name.title }}</strong></h1>
+      </div>
+      <hr />
+      <div class="blog_cat_author">
+        <a href="#" class="author"
+          ><i class="fa fa-user"></i> By
+          <span class="pr-2">{{ blog_name.user }}</span></a
+        >
+        <span class="heading"
+          ><i class="far fa-clock"></i> {{ blog_name.updated_on|date:"F d, Y" }}
+        </span>
+        <a
+          href="{% url 'selected_category' category_slug=blog_name.category.slug %}"
+          class="category"
+          ><span class="badge primary-color">{{ blog_name.category }} </span></a
+        >
+        <br clear="all" />
+      </div>
+      <!--Section: Post-->
+      <section class="mt-4">
+        <!--Featured Image-->
+        <div class="card mb-4 z-depth-0">
+          <img
+            src="{{ blog_name.featured_image.url }}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+        <!--/.Featured Image-->
+
+        <div class="mb-3 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- Quadrado -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="4320030529"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!--Card-->
+        <div class="card mb-4 wow fadeIn z-depth-0">
+          <!--Card content-->
+          <div class="mx-lg-4 mt-3">
+            <p>
+              {{ blog_name.content|safe }}
+            </p>
+          </div>
+        </div>
+        <!--/.Card-->
+        <!-- author-->
+        {% block author %}
+
+        <!--Card-->
+        {% for e in author %} {% if e.id == blog_name.user.id %}
+        <div class="card container z-depth-0 mb-4">
+          <div class="card-header font-weight-bold">
+            <span>Sobre o autor</span>
+            <span class="pull-right pl-3">
+              {% if e.facebook %}
+              <a href="{{e.facebook}}" target="_blank">
+                <i class="fab fa-facebook-f mr-3"></i>
+              </a>
+              {% else %} {% endif %} {% if e.linkedin %}
+              <a href="{{e.linkedin}}" target="_blank">
+                <i class="fab fa-linkedin mr-3"></i>
+              </a>
+              {% else %} {% endif %} {% if e.twiter %}
+              <a href="{{e.twiter}}" target="_blank">
+                <i class="fab fa-twitter mr-3"></i>
+              </a>
+              {% else %} {% endif %} {% if e.web %}
+              <a href="{{e.web}}" target="_blank">
+                <i class="fas fa-blog mr-3"></i>
+              </a>
+              {% else %} {% endif %} {% if e.instagram %}
+              <a href="{{e.instagram}}" target="_blank">
+                <i class="fab fa-instagram mr-3"></i>
+              </a>
+              {% else %} {% endif %}
+            </span>
+          </div>
+          <!--Card content-->
+          <div class="card-body">
+            <div class="media d-block d-md-flex mt-3">
+              <img
+                class="d-flex mb-3 mx-auto z-depth-0"
+                src="{{ e.imagem.url }}"
+                alt="Generic placeholder image"
+                style="width: 100px;"
+              />
+              <div class="media-body text-md-left ml-md-3 ml-0">
+                <h5 class="mt-0 font-weight-bold">{{e.nome}}</h5>
+                {{e.descricao |safe }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.Card-->
+        {% else %} {% endif %} {% endfor %} {% endblock %}
+        <!-- /. author -->
+
+        <div class="container">
+            <!-- Adds -->
+            <div class=" px-0 ">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                     crossorigin="anonymous"></script>
+                <!-- baixo -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1810411345881098"
+                     data-ad-slot="9366002321"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+          <div class="pt-2 d-flex align-self-stretch mb-4"></div>
+          {% include 'posts/comments.html' %}
+        </div>
+
+        <!--Grid column-->
+      </section>
+      <!--Section: Post-->
+    </div>
+    <!-- /. postagem -->
+
+    <!-- postagens-->
+    {% block categoria %}
+
+    <div class="col-md-10 offset-md-1 col-lg-4 offset-lg-0">
+      <div class="sidebar container">
+        <!-- Search Widget -->
+        <div
+          class="widget search p-0 border rounded"
+        >
+          <form class="" action="{% url 'blog_search' %}" method="get">
+            {% csrf_token %}
+            <div class="input-group">
+              <input
+                name="q"
+                type="text"
+                class="form-control px-3 z-depth-1"
+                placeholder="procurar..."
+              />
+              <span class="input-group-addon" style="background-color: #f7992d;"
+                ><i class="fa fa-search"></i
+              ></span>
+            </div>
+          </form>
+        </div>
+
+        <div class=" px-0 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- lateral -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="6899621083"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        {% block recente %} {% include 'posts/recente.html' %} {% endblock %}
+
+        <!-- Adds -->
+        <div class=" px-0 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- lateral -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="6899621083"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- Category Widget -->
+
+        <div
+          class="widget category border rounded py-0 px-0"
+        >
+          <!-- Widget Header -->
+          <h5 class="widget-header white-text py-2 px-2 font-weight-bold" style="background-color: #f7992d;">
+            Categorias
+          </h5>
+          <ul class="category-list px-3">
+            {% for category in categories_list %}
+            <li>
+              <a
+                href="{% url 'selected_category' category_slug=category.slug %}"
+                >{{ category }}
+                <span class="badge float-right" style="background-color: #f7992d;"
+                  >{{ category}}
+                </span></a
+              >
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- Adds -->
+        <div class=" px-0 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+                 crossorigin="anonymous"></script>
+            <!-- lateral -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-1810411345881098"
+                 data-ad-slot="6899621083"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+      </div>
+    </div>
+
+    {% endblock %}
+    <!-- /. postagens -->
+  </div>
+</div>
+
+<div class="container">
+  <!-- artigos relacionados-->
+
+  <div class="card mb-4 wow fadeIn z-depth-0 mx-0 px-0">
+    <div class="card-header white-text py-2 font-weight-bold" style="background-color: #f7992d;">
+      Artigos relacionados, que você poderias gostar
+    </div>
+    <!--Card content-->
+    <div class="card-body">
+      {% if related_posts %}
+      <div class="panel-body">
+        <div class="row">
+          {% for post in related_posts %}
+          <!-- recent_blog starts here -->
+          <div class="col-md-4 mb-2">
+            <div class="card_title">
+              <a href="{% url 'blog_post_view' blog_slug=post.slug %}">
+                <h6 class="mt-0 mb-2 font-weight-normal">
+                  {{ post.title }}
+                </h6>
+              </a>
+            </div>
+
+            <div class="blog_cat_author">
+              <span class="heading"
+                ><i class="far fa-clock"></i>
+                {{post.updated_on|date:"F d, Y"}}
+              </span>
+              <a
+                href="{% url 'selected_category' category_slug=post.category.slug %}"
+                class="category"
+                ><span class="badge unique-color pa-2"
+                  >{{ post.category }}
+                </span></a
+              >
+              <br clear="all" />
+            </div>
+
+            <hr />
+          </div>
+          <!-- recent blog ends here -->
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<!-- /. relacionados-->
+
+<!-- equipa-->
+{% block equipa %} {% endblock %}
+<!-- /. equipa -->
+
+{% endblock content %}
+
+<!-- /.content -->

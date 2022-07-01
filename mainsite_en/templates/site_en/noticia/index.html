@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="google-site-verification" content="zddSG9Su1C2rFiH4lBf8Hq7b27P57AS9epwNWWRNly8" />
+
+    <title>
+      {%block title %}UsandoPy {{ object }} {%endblock%}
+    </title>
+
+    {% block description %}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image" content="{{ object.thumbnail.url }}" />
+    <meta
+      property="og:image:secure_url"
+      content="{{ object.thumbnail.url }}"
+    />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta name="twitter:image" content="{{ object.thumbnail.url }}" />
+    <meta name="twitter:card" content="summary" />
+
+    <meta property="og:title" content="{{ object.title }}" />
+    <meta
+      property="og:description"
+      content="{{ object.meta_description|truncatechars:160 }}"
+    />
+
+    <meta name="title" content="{{ object.title }}" />
+    <meta name="description" content="{{ object.meta_description|truncatechars:160 }}" />
+    <meta name="keywords" content="{{ object.meta_keywords }}" />
+    <meta name="author" content="{{ object.author }}" />
+    <meta name="robots" content="index, follow" />
+
+
+    {% endblock %}
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- End plugin css for this page -->
+    <link rel="shortcut icon" href="{% static 'Logo.jpg' %}" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'assetss/css/style.css' %}" />
+
+    <!-- endinject -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VS65HDVLGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VS65HDVLGL');
+    </script>
+
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1810411345881098"
+     crossorigin="anonymous"></script>
+
+    <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
+    <meta name="p:domain_verify" content="d6669b45149b97c8a9050e425547c8a4"/>
+
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <div class="main-panel">
+        <!-- partial:navbar.html -->
+        {% include './partials/_navbar.html' %}
+
+        <!--  block content -->
+        {% block content %}
+          <!-- partial:home.html -->
+          {% include './partials/home.html' %}
+        {% endblock content %}
+        <!-- /.content -->
+
+        <!--  block footer -->
+    {% block footer %} {% include 'bases_en/footer.html' %}{% endblock footer %}
+      </div>
+    </div>
+    <!-- inject:js -->
+    <script src="{% static 'assetss/vendors/js/vendor.bundle.base.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'assetss/js/demo.js' %}"></script>
+
+    <!-- Optional JavaScript -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+    <!-- Theme Script -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+
+    <!-- End custom js for this page-->
+  </body>
+</html>

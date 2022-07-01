@@ -1,0 +1,61 @@
+{% extends 'site/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Feature News Section -->
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2" style="">
+                <div class="">
+                    <div class="text-center well" style="font-size: 20px;"><b>Login</b></div>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form_a">
+                            {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                <div class="">
+                                    <div class="form-group">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                            <div class="">
+                                <div class="form-group">
+                                <div class="alert alert-danger alert-dismissable">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            </div>
+                            </div>
+                            {% endfor %}
+                          {% endif %}
+                            {% for field in form %}
+                            <div class="">
+                                <div class="form-group">
+                                    <input type="{{ field.field.widget.input_type }}" class="form-control input-lg" name="{{ field.name }}"
+                                    id="id_{{ field.name }}" placeholder="{{ field.field.widget.attrs.placeholder }}" required>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="">
+                                <button class="btn btn-primary" type="submit">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h4>Don't have an Account? <a href="{% url 'account:register' %}">Register Now!</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+
+
+<div class="collapse" id="navbarToggleExternalContent"> 
+    <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarToggleExternalContent"
+                aria-controls="navbarToggleExternalContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+    <div>
+        <div>
+            <ul id="menu">
+                {% for category in categories %}
+                <li class="active">
+                  <a href="{{ category.get_absolute_url }}">{{ category }}</a>
+                </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- .uc-mobile-menu -->
+

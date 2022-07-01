@@ -1,0 +1,50 @@
+<!-- Container Start -->
+<div class=" my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="row row-cols-2 row-cols-md-2 ">
+        <!-- Category list -->
+
+        {% for t in tipo %}
+        <div class="d-flex align-self-stretch px-1 py-0 mb-4 z-depth-0">
+          <div class="category-block mx-0 px-0 flex-fill py-0 my-0 z-depth-0">
+            <div
+              class="text-center mt-0 mx-0 px-0 mb-0 pb-0 rounded z-depth-0 light-blue-text "
+              style="background-color: #f7992d;"
+            >
+              <img class="my-0 py-0 pr-0 pt-1" src="{{t.icon}}" />
+              <h6 class="font-weight-bold py-2" style="color: white;">
+                {{t.name}}
+              </h6>
+            </div>
+            <ul class="list-group-flush z-depth-0 pt-0">
+              {% for c in categoria1 %} {% if t.id == c.tipo.id %}
+
+              <li
+                style="background-color: #f7f6f6;"
+                class="list-group-item px-2 py-2"
+              >
+                <a href="{% url 'categoria-view_es' c.slug  %}">
+                  <h6 class="my-0 py-0 px-lg-0 px-0 text-left font-weight-normal" style="font-size: 13.3px; font-family: Verdana, Helvetica, sans-serif;">
+                    <img
+                      class="h4"
+                      style="height: 22px; width: 22px;"
+                      class="card-img-top im"
+                      src="{{ c.featured_image.url }}"
+                      alt="Card image cap"
+                    />
+                    {{c.name}}
+                  </h6>
+                </a>
+              </li>
+
+              {% endif %} {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container End -->

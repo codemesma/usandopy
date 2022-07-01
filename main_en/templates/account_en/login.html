@@ -1,0 +1,80 @@
+{% extends "account/base.html" %} {% load i18n %} {% block head_links %}
+
+<title>Entrar</title>
+
+{% endblock %} {% block content %}
+<div class="container my-5 py-5">
+  {% block messages %} {% if messages %}
+  <div>
+    <ul>
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %} {% endblock %}
+
+  <!--Grid row-->
+  <div class="row row-cols-1 row-cols-md-1 mx-0 px-0">
+    <div class="col-lg-4 col-md-12 text-left">
+      {%load account socialaccount%}{%get_providers as socialaccount_providers%}
+      <h3 class="pb-3 mx-0 pr-4">Entra com Redes Socias</h3>
+
+      {% for provider in socialaccount_providers %}
+      <a
+        style="padding-top: 10px;"
+        title="{{provider.name}}"
+        class="btn btn-outline-dark my-4 mx-0 px-4"
+        href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+        ><i class="fab fa-{{provider.name}}" id="social_icon"></i
+        >{{provider.name}}</a
+      >
+      <br />
+      {% endfor %}
+    </div>
+    <div class="col-lg-4 col-md-12 text-left">
+      <h4 class="mx-0 pr-4">Ou entre com um nome de Utilizador</h4>
+      <p class="mb-0 pb-0">
+        {% blocktrans %}não tems uma conta? Então
+        <a href="{{ signup_url }}">Registra-se</a>.{% endblocktrans %}
+      </p>
+      <form
+        class="pt-4"
+        id="login_form"
+        method="POST"
+        action="{% url 'account_login' %}"
+      >
+        {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+
+        <input
+          type="hidden"
+          name="{{ redirect_field_name }}"
+          value="{{ redirect_field_value }}"
+        />
+
+        {% endif %}
+
+        <button class="btn btn-outline-primary px-0 mx-0" type="submit">
+          {% trans "Sign In" %}
+        </button>
+        <a
+          style="font-size: 10px;"
+          class="btn btn-outline-dark mx-0 px-0"
+          href="{% url 'account_reset_password' %}"
+          >{% trans " Esqueceu senha ? " %}</a
+        >
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
