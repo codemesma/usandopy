@@ -3,11 +3,7 @@ from django.db import models
 from django.utils.html import escape, mark_safe
 from django_countries.fields import CountryField
 
-
-class User(AbstractUser):
-    is_student = models.BooleanField(default=False)
-    is_teacher = models.BooleanField(default=False)
-    
+from classroom.models import User
 
 class Subject(models.Model):
     name = models.CharField(max_length=30)
@@ -24,9 +20,9 @@ class Subject(models.Model):
 
 
 class Quiz(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes_en')
     name = models.CharField(max_length=255)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='quizzes')
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='quizzes_en')
 
     def __str__(self):
         return self.name
@@ -34,7 +30,7 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions')
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions_en')
     text = models.TextField('Question')
 
     def __str__(self):
@@ -42,7 +38,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers_en')
     text = models.CharField('Answer', max_length=255)
     is_correct = models.BooleanField('Correct answer', default=False)
 
@@ -52,10 +48,10 @@ class Answer(models.Model):
 
 class Student(models.Model):
     photo = models.ImageField(upload_to='images', blank=True, null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='students_en')
     country = CountryField(blank_label='(Selecione o pais)')
     quizzes = models.ManyToManyField(Quiz, through='TakenQuiz')
-    interests = models.ManyToManyField(Subject, related_name='interested_students')
+    interests = models.ManyToManyField(Subject, related_name='interested_students_en')
     
     # User reputation score.
     score = models.IntegerField(default=0)
@@ -72,15 +68,15 @@ class Student(models.Model):
 
 
 class TakenQuiz(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes')
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='taken_quizzes')
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_quizzes_en')
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='taken_quizzes_en')
     score = models.IntegerField()
     percentage = models.FloatField()
     date = models.DateTimeField(auto_now_add=True)
 
 
 class StudentAnswer(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_answers')
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='quiz_answers_en')
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')
 
 

@@ -33,7 +33,7 @@ def signup(request):
             login(request, user)
  
             # redirect user to home page
-            return redirect('students:quiz_list')
+            return redirect('students:quiz_list_en')
     else:
         form = StudentSignUpForm()
     return render(request, 'registration/signup_form.html', {'form': form})

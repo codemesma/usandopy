@@ -10,6 +10,10 @@ from django.contrib.sitemaps import views as sitemap_views
 from main.sitemaps import StaticViewSitemap, TutorialViewSitemap, PostViewSitemap
 
 from classroom.views import classroom, students, teachers
+from classroom_en.views import classroom as classroom_en
+from classroom_en.views import students as students_en
+from classroom_en.views import teachers as teachers_en
+
 from django.contrib.auth import views as auth_views
 
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -45,14 +49,18 @@ urlpatterns = [
     #url(r'^accounts/', include('allauth.urls')),
 
     path('quiz/', include('classroom.urls')),
+    path('quiz_en/', include('classroom_en.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path("ads.txt", RedirectView.as_view(url=staticfiles_storage.url("ads.txt")),),
     
-    # path('accounts/login/', auth_views.LoginView.as_view(redirect_authenticated_user=True), name='login'),
     path('accounts/', include('django.contrib.auth.urls'),name='signup_'),
     path('accounts/signup/', students.StudentSignUpView.as_view(), name='signup'),
-    # path('accounts/signup/student/', students.StudentSignUpView.as_view(), name='student_signup'),
     path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
+    
+    
+    path('accounts_en/', include('django.contrib.auth.urls'),name='signup_en'),
+    path('accounts_en/signup_en/', students_en.StudentSignUpView.as_view(), name='signup_en'),
+    path('accounts_en/signup_en/teacher_en/', teachers_en.TeacherSignUpView.as_view(), name='teacher_signup_en'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

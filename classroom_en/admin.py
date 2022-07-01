@@ -21,7 +21,7 @@ class AuditEntryAdmin(admin.ModelAdmin):
 
 # admin.site.register(AuditEntry)
 
-admin.site.register(User)
+#admin.site.register(User)
 admin.site.register(Subject)
 admin.site.register(Quiz)
 admin.site.register(Question)

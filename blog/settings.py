@@ -22,7 +22,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'classroom',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -39,6 +38,9 @@ INSTALLED_APPS = [
     'news_en.apps.News_enConfig',
     'ckeditor',
     'ckeditor_uploader',
+    
+    'classroom',
+    'classroom_en',
 
     #3rd party
     'taggit',

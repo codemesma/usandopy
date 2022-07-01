@@ -7,7 +7,7 @@ from django_countries.widgets import CountrySelectWidget
 
 from classroom.models import (Answer, Question, Student, StudentAnswer,
                               Subject, User)
-
+from classroom.models import User
 
 class TeacherSignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):

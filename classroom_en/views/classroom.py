@@ -7,16 +7,16 @@ from ..models import Student
 from classroom.models import Quiz
 
 class SignUpView(TemplateView):
-    template_name = 'registration/signup.html'
+    template_name = 'registration_en/signup.html'
 
 def home(request):
     if request.user.is_authenticated:
         if request.user.is_student:
-            return redirect('students:quiz_list')
+            return redirect('home_en')
     
     top_student = Student.objects.order_by('-score')
 
-    return render(request,'classroom/quiz_list.html',{
+    return render(request,'classroom_en/quiz_list.html',{
         'quizzes':Quiz.objects.annotate(questions_count=Count('questions')) \
             .filter(questions_count__gt=0), 'top_student' : top_student })
 
@@ -30,4 +30,4 @@ def save_github_user(backend, user, response, *args, **kwargs):
 
 
 class AboutView(TemplateView):
-    template_name = 'classroom/about.html'
+    template_name = 'classroom_en/about.html'
