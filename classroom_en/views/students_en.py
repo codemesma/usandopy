@@ -36,12 +36,12 @@ def signup(request):
             return redirect('students:quiz_list_en')
     else:
         form = StudentSignUpForm()
-    return render(request, 'registration/signup_form.html', {'form': form})
+    return render(request, 'registration_en/signup_form.html', {'form': form})
 
 class StudentSignUpView(CreateView):
     model = User
     form_class = StudentSignUpForm
-    template_name = 'registration/signup_form.html'
+    template_name = 'registration_en/signup_form.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'student'
@@ -59,7 +59,7 @@ class StudentInterestsView(UpdateView):
     
     model = Student
     form_class = StudentInterestsForm
-    template_name = 'classroom/students/interests_form.html'
+    template_name = 'classroom_en/students/interests_form.html'
     success_url = reverse_lazy('students:quiz_list')
 
     def get_object(self):
@@ -75,14 +75,14 @@ class QuizListView(ListView):
     model = Quiz
     ordering = ('name', )
     context_object_name = 'quizzes'
-    template_name = 'classroom/students/quiz_list.html'
+    template_name = 'classroom_en/students/quiz_list.html'
 
     def get_queryset(self):
         student = self.request.user.student
         # student_interests = student.interests.values_list('pk', flat=True)
         taken_quizzes = student.quizzes.values_list('pk', flat=True)
         queryset = Quiz.objects.exclude(pk__in=taken_quizzes) \
-            .annotate(questions_count=Count('questions')) \
+            .annotate(questions_count=Count('questions_en')) \
             .filter(questions_count__gt=0)
         return queryset
 
@@ -96,7 +96,7 @@ class QuizListView(ListView):
 
 @method_decorator([login_required, student_required], name='dispatch')
 class QuizResultsView(View):
-    template_name = 'classroom/students/quiz_result.html'
+    template_name = 'classroom_en/students/quiz_result.html'
 
     def get(self, request, *args, **kwargs):        
         quiz = Quiz.objects.get(id = kwargs['pk'])
@@ -117,7 +117,7 @@ class QuizResultsView(View):
 class TakenQuizListView(ListView):
     model = TakenQuiz
     context_object_name = 'taken_quizzes'
-    template_name = 'classroom/students/taken_quiz_list.html'
+    template_name = 'classroom_en/students/taken_quiz_list.html'
 
     def get_queryset(self):
         queryset = self.request.user.student.taken_quizzes \

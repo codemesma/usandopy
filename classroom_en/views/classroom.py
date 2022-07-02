@@ -10,9 +10,6 @@ class SignUpView(TemplateView):
     template_name = 'registration_en/signup.html'
 
 def home(request):
-    if request.user.is_authenticated:
-        if request.user.is_student:
-            return redirect('students:quiz_list')
     
     top_student = Student.objects.order_by('-score')
 

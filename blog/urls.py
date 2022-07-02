@@ -11,7 +11,7 @@ from main.sitemaps import StaticViewSitemap, TutorialViewSitemap, PostViewSitema
 
 from classroom.views import classroom, students, teachers
 from classroom_en.views import classroom as classroom_en
-from classroom_en.views import students as students_en
+from classroom_en.views import students_en
 from classroom_en.views import teachers as teachers_en
 
 from django.contrib.auth import views as auth_views

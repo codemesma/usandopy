@@ -1,4 +1,4 @@
-{% extends 'quiz/base.html' %}
+{% extends 'quiz_en/base.html' %}
 {% load static %}
 
 {% block css %}
@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block content %}
-  {% include 'classroom/_guest_header.html' with active='quizzes' %}
+  {% include 'classroom_en/_guest_header.html' with active='quizzes' %}
   
   <table class="table table-bordered mb-0" id="tb_quizlist" >
     <thead class="table-light">
       <tr >
         <th>Quiz</th>
-        <th class="d-none d-sm-table-cell">Tópicos</th>
-        <th class="d-none d-sm-table-cell">Perguntas</th>
+        <th class="d-none d-sm-table-cell">Topics</th>
+        <th class="d-none d-sm-table-cell">Questions</th>
         <th></th>
       </tr>
     </thead>
@@ -24,12 +24,12 @@
           <td class="align-middle d-none d-sm-table-cell">{{ quiz.subject.get_html_badge }}</td>
           <td class="align-middle d-none d-sm-table-cell">{{ quiz.questions_count }}</td>
           <td class="text-right" data-orderable="false">
-            <a href="{% url 'students:take_quiz' quiz.pk %}" class="btn btn-sm btn-outline-dark" data-mdb-ripple-color="dark">iniciar</a>
+            <a href="{% url 'students:take_quiz' quiz.pk %}" class="btn btn-sm btn-outline-dark" data-mdb-ripple-color="dark">start</a>
           </td>
         </tr>
       {% empty %}
         <tr>
-          <td class="bg-light text-center font-italic" colspan="4">Nenhum quiz que corresponda aos seus interesses agora.</td>
+          <td class="bg-light text-center font-italic" colspan="4">No quiz that matches your interests right now.</td>
         </tr>
       {% endfor %}
     </tbody>

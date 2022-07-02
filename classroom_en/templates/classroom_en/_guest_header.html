@@ -1,13 +1,13 @@
 <ul class="nav nav-tabs mb-3">
   
   <li class="nav-item">
-    <a class="nav-link{% if active == 'quizzes' %} active{% endif %}" href="{% url 'home_en' %}">Quiz</a>
+    <a class="nav-link{% if active == 'quizzes' %} active{% endif %}" href="{% url 'students_en:quiz_list_en' %}">Quiz</a>
   </li>
   <li class="nav-item">
     <a class="nav-link{% if active == 'students' %} active{% endif %}" href="{% url 'students_en:student_list_en' %}">Students</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link{% if active == 'about' %} active{% endif %}" href="{% url 'classroom_en:about_en' %}">About</a>
+    <a class="nav-link{% if active == 'about' %} active{% endif %}" href="{% url 'about_en' %}">About</a>
   </li>
 </ul>
 

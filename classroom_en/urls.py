@@ -1,21 +1,20 @@
 from django.urls import include, path
 
-from .views import classroom, students, teachers
+from .views import classroom, students_en, teachers
 
-app_name = 'classroom_en'
 urlpatterns = [
     path('', classroom.home, name='home_en'),
     path('about_en/', classroom.AboutView.as_view(), name='about_en'),
     # path('quizzes/', classroom.QuizListView.as_view(), name='quiz_list'),
 
     path('students_en/', include(([        
-        path('', students.StudentList.as_view(), name='student_list_en'),
-        path('<int:student>/', students.StudentDetail.as_view(), name='student_detail_en'),
-        path('interests/', students.StudentInterestsView.as_view(), name='student_interests_en'),
-        path('taken/', students.TakenQuizListView.as_view(), name='taken_quiz_list_en'),
-        path('quiz/', students.QuizListView.as_view(), name='quiz_list_en'),
-        path('quiz/<int:pk>/', students.take_quiz, name='take_quiz_en'),        
-        path('quiz/<int:pk>/studentresults/', students.QuizResultsView.as_view(), name='student_quiz_results_en'),
+        path('', students_en.StudentList.as_view(), name='student_list_en'),
+        path('<int:student>/', students_en.StudentDetail.as_view(), name='student_detail_en'),
+        path('interests/', students_en.StudentInterestsView.as_view(), name='student_interests_en'),
+        path('taken/', students_en.TakenQuizListView.as_view(), name='taken_quiz_list_en'),
+        path('quiz/', students_en.QuizListView.as_view(), name='quiz_list_en'),
+        path('quiz/<int:pk>/', students_en.take_quiz, name='take_quiz_en'),        
+        path('quiz/<int:pk>/studentresults/', students_en.QuizResultsView.as_view(), name='student_quiz_results_en'),
     ], 'classroom'), namespace='students_en')),
     path('teachers_en/', include(([
         path('', teachers.QuizListView.as_view(), name='quiz_change_list'),
